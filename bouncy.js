@@ -27,8 +27,32 @@ document.getElementById("svg").addEventListener("click", function(evt) {
 
     //create the animation loop, runs 30/second
     var id = setInterval(function() {
+        //check bounds for bounce
+        if(x + r >= WIDTH) {
+            velocityX *= -1;
+            x = WIDTH - r - 1;
+        } else if(x - r <= 0) {
+            velocityX *= -1;
+            x = r + 1;
+        }
+        if(y + r >= HEIGHT) {
+            velocityY *= -1;
+            y = HEIGHT - r - 1;
+        } else if(y - r <= 0) {
+            velocityY *= -1;
+            y = r + 1;
+        }
+        //update variables
+        x += velocityX;
+        y += velocityY;
+        //move the element on screen
+        circle.setAttribute("cx", x);
+        circle.setAttribute("cy", y);
     }, 1000 / 30);
 
     //tell the clear button to stop this animation loop when it is clicked
-    document.getElementById("clear").addEventListener("click", function(evt) {});
+    document.getElementById("clear").addEventListener("click", function(evt) {
+        //should do clearInterval() on the id
+        //remove the circle from the svg(try "circle.remove()")
+    });
 });
