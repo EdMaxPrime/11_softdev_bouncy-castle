@@ -52,8 +52,7 @@ document.getElementById("svg").addEventListener("click", function(evt) {
 
     //tell the clear button to stop this animation loop when it is clicked
     document.getElementById("clear").addEventListener("click", function(evt) {
-      svg.innerHTML = "";
-        //should do clearInterval() on the id
-        //remove the circle from the svg(try "circle.remove()")
+        clearInterval(id);
+        circle.remove();
     });
 });
